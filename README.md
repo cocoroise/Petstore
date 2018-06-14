@@ -14,4 +14,4 @@
 
 -------------------------------------------------------------------------
 ###### Tips:
-1. 前后台用json传数据的步骤，在前台里，可以使用JSON.stringify()函数，把一个js中的对象转成json的string，也可以使用JSON.parse()函数，把一个json的string转成一个js里的对象；后台里，有JSONObject和JSONArray两个对象，转string就用它们的toString()函数，转对象，就用toBean()和toArray()函数。需要注意的是JSONObject必须是string的键。
+1. 前后台用json传数据的步骤，在前台里，可以使用JSON.stringify()函数，把对象转成json的string，也可以使用JSON.parse()函数，把json的string转成一个js里的对象；后台里，有JSONObject和JSONArray两个对象，转string就用它们的toString()函数，转对象，就用toBean()和toArray()函数。需要注意的是JSONObject必须是string的键。
