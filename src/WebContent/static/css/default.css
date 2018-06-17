@@ -176,7 +176,7 @@ nav.ui.menu {
 
   .ui.demo.container {
     margin-left: calc((100% - 723px)/2) !important;
-    margin-right: 250 !important; }
+    margin-right: 250px !important; }
     .ui.demo.container > .tab {
       width: 550px; }
 

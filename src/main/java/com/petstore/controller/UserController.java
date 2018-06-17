@@ -5,7 +5,6 @@ import com.petstore.po.User;
 import com.petstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,6 +45,10 @@ public class UserController {
         System.out.println("register");
         return "register";
     }
+    @RequestMapping(value = "/error")
+    public String error(){
+        return "error";
+    }
 
     //映射方法名
     @RequestMapping(value = "/doLogin",method= RequestMethod.POST)
@@ -71,9 +74,9 @@ public class UserController {
 
     @RequestMapping(value = "/reLogin")
     public String reLogin(HttpSession httpSession){
-        System.out.println("relogin");
-        httpSession.setAttribute("currentUser",null);
-        return "forward:login";
+        System.out.println("我接受到了relogin请求");
+        httpSession.setAttribute("currentUser","");
+        return "redirect:login";
     }
 
     @RequestMapping(value = "/doRegister",method = RequestMethod.POST)

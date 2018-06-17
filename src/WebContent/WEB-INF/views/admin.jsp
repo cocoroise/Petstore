@@ -74,5 +74,10 @@
     </div>
     </div>
     <div id="footer"><%@include file="footer.html"%></div>
+    <style>
+        body{
+            background: url("${pageContext.request.contextPath}/static/img/assets/admin_bg.jpg") no-repeat 100% 100%;
+        }
+    </style>
 </body>
 </html>

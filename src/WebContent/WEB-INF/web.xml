@@ -9,6 +9,11 @@
     <welcome-file>/WEB-INF/views/main.jsp</welcome-file>
   </welcome-file-list>
 
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/error.jsp</location>
+  </error-page>
+
   <!-- 加载spring容器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -19,6 +24,8 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+
 
   <!-- 中央控制器 -->
   <servlet>
@@ -70,34 +77,34 @@
     <!--<url-pattern>*.eot</url-pattern>-->
   <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.svg</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.svg</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.ttf</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.ttf</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.woff</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.woff</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.woff2</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.woff2</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.otf</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.otf</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.png</url-pattern>-->
-    <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.png</url-pattern>-->
+  <!--</servlet-mapping>-->
 </web-app>
         

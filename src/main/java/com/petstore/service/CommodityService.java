@@ -14,4 +14,6 @@ public interface CommodityService {
     public boolean deleteCommodity(int id);
 
     public boolean updateCommodity(int id,int type);
+
+    public List getAllCommodity();
 }

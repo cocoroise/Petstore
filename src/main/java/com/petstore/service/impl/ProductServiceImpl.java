@@ -70,7 +70,6 @@ public class ProductServiceImpl implements ProductService{
         ProductExample pe=new ProductExample();
         ProductExample.Criteria pec=pe.createCriteria();
         pec.andProductIdIsNotNull();
-        pe.setOrderByClause("id asc");
         return productMapper.selectByExample(pe);
     }
 }

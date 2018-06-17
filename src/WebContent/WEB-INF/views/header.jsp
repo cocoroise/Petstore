@@ -8,6 +8,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
     <link href="${pageContext.request.contextPath}/static/css/semantic.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/static/css/default.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/static/js/skin/default/layer.css" rel="stylesheet" type="text/css">
+    <script src="${pageContext.request.contextPath}/static/js/layer.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/semantic.min.js" type="text/javascript"></script>
 </head>
@@ -23,11 +25,11 @@
     <a href="${pageContext.request.contextPath}/petshow" class="active item">宠物</a>
     <a href="${pageContext.request.contextPath}/productshow" class="item">宠物用品</a>
 
-        <div class="ui grid container">
+        <div class="ui container grid ">
             <div class="right menu item">
                 <div class="ui icon input">
-                    <input type="text" placeholder="Search...">
-                    <i class="search icon"></i>
+                    <input id="search" type="text" placeholder="Search...">
+                    <i class="circular search link icon" onclick="onSearch()"></i>
                 </div>
                 <div class="ui dropdown item">
                     <c:if test="${empty currentUser}">
@@ -47,6 +49,7 @@
                         <img class="ui mini circular image"
                              src="${pageContext.request.contextPath}/static/img/assets/sheep.png"
                              alt="label-image" />
+                        <div class="ui text aligned">你好,${currentUser.name}</div>
                         <div class="menu">
                             <a class="item" href="${pageContext.request.contextPath}/reLogin">重新登录</a>
                             <a class="item" href="${pageContext.request.contextPath}/register">新用户注册</a>
@@ -74,9 +77,12 @@
     }
     .ui.container.grid{
         margin-left: 0.5em!important;
+        margin-top: 0;
+        margin-bottom:0;
+        max-height: 4rem;
     }
-    .ui.menu.active.item{
-        padding:0.5em;
+    .ui.menu .item{
+        max-height: 4rem;
     }
     .header.item {
         background-color: white !important;
@@ -84,12 +90,6 @@
     #head_img{
        max-width: 10rem;
        height: 2rem;
-    }
-    .ui.vertical.menu {
-        display: none;
-        border: none;
-        box-shadow: none;
-        background-color: #f8f8f8;
     }
     .ui.vertical.menu > .item {
         padding-left: 1.428em;
@@ -103,6 +103,12 @@
     .ui.vertical.menu .header.item {
         text-transform: uppercase;
     }
+    .circular.search.link.icon{
+        top:0.25em!important;
+    }
+    .ui.text.aligned{
+        margin-left: 5px;
+    }
 </style>
 <script>
     $(document).ready(function() {
@@ -114,6 +120,24 @@
             $('.ui.vertical.menu').toggle("250", "linear")
         });
     });
+    function onSearch() {
+        var search={}
+        var search_text=$("#search").val()
+        $.ajax({
+            type:'POST',
+            url:"${pageContext.request.contextPath}/search",
+            data:search,
+            dataType:JSON,
+            success:function (result) {
+                if(result.result==='success'){
+                    window.location.href="${pageContext.request.contextPath}/onsearch"
+                }
+            },
+            error:function (result) {
+                layer.alert("unexpected error")
+            }
+        })
+    }
 </script>
 </body>
 </html>
