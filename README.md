@@ -17,3 +17,4 @@
 1. 前后台用json传数据的步骤，在前台里，可以使用JSON.stringify()函数，把对象转成json的string，也可以使用JSON.parse()函数，把json的string转成一个js里的对象；后台里，有JSONObject和JSONArray两个对象，转string就用它们的toString()函数，转对象，就用toBean()和toArray()函数。需要注意的是JSONObject必须是string的键。
 2. window.location.href不能正常跳转，window.open也没有用，在这后面加上window.event.returnValue=false,放在提交表单中的onclick事件中则不会提交表单，如果放到超链接中则不执行超链接，也就是它禁止了或取消了请求。个人理解是我的非异步（async==false）请求成功后跳转了页面，就不在当前页面了，就不会在执行这个跳转了，加上这句之后这次ajax的返回值就不计了，于是请求就能成功了。
 3. 多个子card想绑定一个div的onclick事件，在父div上绑定getValue(event),然后子元素上赋给自定义属性data-value,在getValue(e)里用e.target.getAttribute("data-value")就可以获得当前被click的子元素的值，而且还可以自定义任何值。
+
