@@ -12,6 +12,18 @@
     <link href="${pageContext.request.contextPath}/static/css/default.css" rel="stylesheet" type="text/css">
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/semantic.min.js" type="text/javascript"></script>
+    <style>
+        body{
+            background: linear-gradient(to top,#e6fff17d 0%, #ffffff 100%) no-repeat fixed !important;
+        }
+        #menu {
+            position: fixed;
+            border: 1px gainsboro solid;
+            box-shadow:2px 2px 2px #00B5AD ;
+            width: auto;
+            transition: all .3s ease-in-out;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -94,15 +106,7 @@
         </div>
     </div>
 </div>
-<style>
-    #menu {
-        position: fixed;
-        border: 1px gainsboro solid;
-        box-shadow:2px 2px 2px #00B5AD ;
-        width: auto;
-        transition: all .3s ease-in-out;
-    }
-</style>
+
 <script>
     var loading = layer.load(0)
 

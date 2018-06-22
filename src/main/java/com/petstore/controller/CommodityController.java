@@ -98,4 +98,23 @@ public class CommodityController {
         return resultMap;
     }
 
+    @RequestMapping(value = "getAllPets")
+    @ResponseBody
+    public Map<String,Object> getAllPets(){
+        List pet_list=petService.getAllPets();
+        String all_pet=JSONArray.toJSONString(pet_list);
+        Map<String,Object> resultMap=new HashMap<String ,Object>();
+        resultMap.put("all_pet",all_pet);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "getAllProducts")
+    @ResponseBody
+    public Map<String,Object> getAllProducts(){
+        List product_list=productService.getAllProduct();
+        String all_product=JSONArray.toJSONString(product_list);
+        Map<String,Object> resultMap=new HashMap<String,Object>();
+        resultMap.put("all_product",all_product);
+        return resultMap;
+    }
 }

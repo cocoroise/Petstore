@@ -22,8 +22,8 @@
              src="${pageContext.request.contextPath}/static/img/assets/cocoroise1.png"
              alt="CocoRoise">
     </a>
-    <a href="${pageContext.request.contextPath}/petshow" class="active item">宠物</a>
-    <a href="${pageContext.request.contextPath}/productshow" class="item">宠物用品</a>
+    <a id="pet_show" href="${pageContext.request.contextPath}/petshow" class="item">宠物</a>
+    <a id="product_show" href="${pageContext.request.contextPath}/productshow" class="item">宠物用品</a>
 
         <div class="ui container grid ">
             <div class="right menu item">
@@ -51,6 +51,9 @@
                              alt="label-image" />
                         <div class="ui text aligned">你好,${currentUser.name}</div>
                         <div class="menu">
+                            <a class="item" href="${pageContext.request.contextPath}/shopping_car">购物车</a>
+                            <a class="item" href="${pageContext.request.contextPath}/shopping_record">订单</a>
+                            <div class="ui divider"></div>
                             <a class="item" href="${pageContext.request.contextPath}/reLogin">重新登录</a>
                             <a class="item" href="${pageContext.request.contextPath}/register">新用户注册</a>
                             <c:if test="${currentUser.role==1}">
