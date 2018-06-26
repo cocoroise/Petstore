@@ -20,3 +20,4 @@
 3. 多个子card想绑定一个div的onclick事件，在父div上绑定getValue(event),然后子元素上赋给自定义属性data-value,在getValue(e)里用e.target.getAttribute("data-value")就可以获得当前被click的子元素的值，而且还可以自定义任何值。
 4. 在github新建分支并上传到远程仓库，仓库名为shopping，先创建本地分支 git branch shopping，然后切换到这个分支 git checkout shopping，然后push或者pull到仓库，git push origin shopping，一般push失败是因为远程仓库里的东西和你现在有的不一样，你必须要先pull到自己的仓库，第一次pull的时候会进入vi的编辑界面，这里就要用到linux的知识了，:进入命令行模式，i进去编辑模式，东西写完了想退出就先：然后看低行的光标，输入wq，就可以保存并退出了。
 5.在jsp里用字符串模板和el表达式冲突的解决方法，${"${item.name}"},让jsp把它看成字符串不解析。
+6. 用$获取的对象是jQuery对象，想要转换成原生对象只要从数组里取一个值出来就好了，比如说$("#list")[0]
