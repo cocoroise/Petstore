@@ -37,7 +37,7 @@
                         <input id="userPassword" name="password" placeholder="Password" type="password" />
                     </div>
                 </div>
-                <div class="ui fluid large teal button submit" onclick="onLogin()" type="submit">
+                <div class="ui fluid large teal submit button " onclick="onLogin()" type="submit">
                     Submit
                 </div>
             </div>
@@ -48,7 +48,6 @@
         </div>
     </div>
 </div>
-<div id="footer"><%@include file="footer.html"%></div>
 <style type="text/css">
     body {
         background-image: url("${pageContext.request.contextPath}/static/img/assets/login_bg.png");
@@ -66,6 +65,7 @@
     .column {
         max-width: 450px;
     }
+
 </style>
 <script>
     $(document).ready(function() {

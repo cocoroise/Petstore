@@ -61,7 +61,7 @@
                             <div class="content">
                                 <a data-value="1" href="" class="header">Coco</a>
                                 <div class="meta">￥2000</div>
-                                <div class="description">柯基 品种纯正 宠物级</div>
+                                <div class="description">威尔士柯基犬是一种小型犬，性格非常稳健，是非常适合小孩的守护犬。它们的胆子很大，也相当机警，能高度警惕地守护家园，是最受欢迎的小型护卫犬之一。</div>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
         pet.id = e.target.getAttribute("data-value")
         console.log("pet.id:"+pet.id)
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '${cp}/getPetDetail',
             async: false,
             data: pet,
@@ -201,13 +201,12 @@
                 }
             }
         })
-
     }
     function getProductDetail(e) {
         var product={}
-        product.id=e.target.getAttribute("data-value")
+        product.productId=e.target.getAttribute("data-value")
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '${cp}/getProductDetail',
             async: false,
             data: product,

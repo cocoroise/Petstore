@@ -75,7 +75,7 @@
                                             <th></th>
                                             <th colspan="4">
                                                 <div class="ui right floated small primary labeled icon button hiddenui"
-                                                     onclick="addShoppingCar()">
+                                                     onclick="addShoppingCar(${currentCommodity.productId})">
                                                     <i class="add icon"></i> 加入购物车
                                                 </div>
                                             </th>
@@ -104,8 +104,51 @@
     }
 </style>
 <script>
-    function addShoppingCar() {
+    function addShoppingCar(commodityId) {
+        judgeIsLogin()
+        //product的counts为1,每一只都是独特有名字的
+        let product = {}
+        product.userId =Number(${currentUser.id})
+        product.productId =Number(commodityId)
+        product.type = Number(${currentCommodity.type})
+        product.counts=Number(1)
+        $.ajax({
+            async: false,
+            url: '${cp}/addShoppingCar',
+            type:'POST',
+            data:product,
+            dataType: 'json',
+            success: function (result) {
+                if (result.result === 'success') {
+                    layer.confirm('前往购物车？', {icon: 1, title: '添加成功', btn: ['前往购物车', '继续浏览']},
+                        function () {
+                            window.location.href = "${cp}/shopping_car";
+                        },
+                        function (index) {
+                            layer.close(index);
+                        }
+                    );
+                }
+            }
+        })
+    }
 
+    function subCounts() {
+        let productCounts = $("#productCounts")
+        let counts = Number(productCounts.innerHTML)
+        if (counts >= 2) {
+            counts--;
+        }
+        productCounts.text(counts)
+    }
+
+    function addCounts() {
+        let productCounts = $("#productCounts")
+        let counts = Number(productCounts.innerHTML)
+        if (counts <${currentCommodity.counts}) {
+            counts++;
+        }
+        productCounts.text(counts)
     }
     function judgeIsLogin() {
         if("${currentUser.id}" == null || "${currentUser.id}" == undefined || "${currentUser.id}" ==""){

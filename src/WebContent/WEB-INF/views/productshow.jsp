@@ -136,10 +136,10 @@
     //转到详情页
     function getProductDetail(e) {
         var product = {}
-        product.id = e.target.getAttribute("data-value")
+        product.productId =e.target.getAttribute("data-value")
         console.log("product.id:" + product.productId)
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '${cp}/getProductDetail',
             async: false,
             data: product,

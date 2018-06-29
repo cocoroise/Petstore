@@ -11,6 +11,8 @@ public interface ShoppingCarRecordService {
 
     public boolean deleteShoppingRecord(int userId,int productId);
 
+    public boolean deleteShoppingRecordById(int id);
+
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord);
 
     public List<ShoppingRecord> getShoppingRecordsByOrderStatus(int orderStatus);
@@ -20,5 +22,7 @@ public interface ShoppingCarRecordService {
     public List<ShoppingRecord> getAllShoppingRecords();
 
     public boolean getUserRecord(int userId,int Id);
+
+    public boolean getUserProductRecord(int userId,int productId);
 
 }

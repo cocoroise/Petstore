@@ -73,12 +73,12 @@
                                         <tfoot class="full-width">
                                         <tr>
                                             <th></th>
-                                            <th colspan="4">
-                                                <div class="ui right floated small primary labeled icon button hiddenui"
-                                                onclick="addShoppingCar()">
+                                            <td colspan="4">
+                                                <div class="ui right floated  primary labeled icon button "
+                                                     onclick="addShoppingCar(${currentCommodity.id})">
                                                     <i class="add icon"></i> 加入购物车
                                                 </div>
-                                            </th>
+                                            </td>
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -92,24 +92,51 @@
     </div>
 </div>
 <style>
-    body{
+    body {
         overflow: hidden;
     }
-    .ui.main.container{
+
+    .ui.main.container {
         margin-top: 5%;
     }
-    .aligned.image img{
+
+    .aligned.image img {
         border-radius: .4rem;
         box-shadow: 1px 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
     }
 </style>
 <script>
-    $('.special.cards .image').dimmer({on: 'hover'})
-    function addShoppingCar() {
-
+    function addShoppingCar(commodityId) {
+        judgeIsLogin()
+        //pet的counts为1,每一只都是独特有名字的
+        let pet = new Object
+        pet.userId =Number(${currentUser.id})
+        pet.productId =Number(commodityId)
+        pet.type =Number(${currentCommodity.type})
+        pet.counts=Number(1)
+        $.ajax({
+            async: false,
+            url: '${cp}/addShoppingCar',
+            type:'POST',
+            data:pet,
+            dataType: 'json',
+            success: function (result) {
+                if (result.result == 'success') {
+                    layer.confirm('前往购物车？', {icon: 1, title: '添加成功', btn: ['前往购物车', '继续浏览']},
+                        function () {
+                            window.location.href = "${cp}/shopping_car";
+                        },
+                        function (index) {
+                            layer.close(index);
+                        }
+                    );
+                }
+            }
+        })
     }
+
     function judgeIsLogin() {
-        if("${currentUser.id}" == null || "${currentUser.id}" == undefined || "${currentUser.id}" ==""){
+        if ("${currentUser.id}" == null || "${currentUser.id}" == undefined || "${currentUser.id}" == "") {
             window.location.href = "${cp}/login";
         }
     }

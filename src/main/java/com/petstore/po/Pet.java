@@ -9,6 +9,8 @@ public class Pet {
 
     private Integer age;
 
+    private Integer counts;
+
     private Double price;
 
     private String description;
@@ -69,5 +71,14 @@ public class Pet {
 
     public void setKeyWord(String keyWord) {
         this.keyWord = keyWord == null ? null : keyWord.trim();
+    }
+
+
+    public Integer getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Integer counts) {
+        this.counts = counts;
     }
 }

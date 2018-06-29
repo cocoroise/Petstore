@@ -58,7 +58,7 @@ public class PetServiceImpl implements PetService{
         PetExample pe=new PetExample();
         PetExample.Criteria pec=pe.createCriteria();
         pec.andNameIsNotNull();
-        pec.andNameLike(searchKeyWord);
+        pec.andKeyWordLike(searchKeyWord);
         return petMapper.selectByExample(pe);
     }
 

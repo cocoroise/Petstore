@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping(value = "/admin")
     public String admin(){
         System.out.println("拦截到admin请求");
-        return "admin";
+        return "edit_pet";
     }
 
     @RequestMapping(value = "/login")
@@ -45,6 +45,12 @@ public class UserController {
         System.out.println("register");
         return "register";
     }
+
+    @RequestMapping(value = "/editMessage")
+    public String edit(){
+        return "editMessage";
+    }
+
     @RequestMapping(value = "/error")
     public String error(){
         return "error";
@@ -112,6 +118,26 @@ public class UserController {
         String result= JSON.toJSONString(user);
         Map<String,Object> resultMap=new HashMap<String,Object>();
         resultMap.put("result",result);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/getUserEmail")
+    @ResponseBody
+    public Map<String,Object> getUserAddress(int id){
+        User user=userService.getUser(id);
+        String email=user.getEmail();
+        Map<String,Object> resultMap=new HashMap<String,Object>();
+        resultMap.put("email",email);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/getUserPhone")
+    @ResponseBody
+    public Map<String,Object> getUserPhone(int id){
+        User user=userService.getUser(id);
+        String phone=user.getPhone();
+        Map<String,Object> resultMap=new HashMap<String,Object>();
+        resultMap.put("phone",phone);
         return resultMap;
     }
 }

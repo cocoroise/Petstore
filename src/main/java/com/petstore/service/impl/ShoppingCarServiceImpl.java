@@ -39,6 +39,13 @@ public class ShoppingCarServiceImpl  implements ShoppingCarService{
     }
 
     @Override
+    public boolean deleteShoppingCarById(int id) {
+        ShoppingCarKey key=new ShoppingCarKey();
+        key.setProductId(id);
+        return shoppingCarMapper.deleteByPrimaryKey(key)>0;
+    }
+
+    @Override
     public boolean updateShoppingCar(ShoppingCar shoppingCar) {
         return shoppingCarMapper.updateByPrimaryKey(shoppingCar)>0;
     }

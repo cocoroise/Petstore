@@ -39,6 +39,13 @@ public class ShoppingCarRecordServiceImpl implements ShoppingCarRecordService{
     }
 
     @Override
+    public boolean deleteShoppingRecordById(int id) {
+        ShoppingRecordKey key=new ShoppingRecordKey();
+        key.setProductId(id);
+        return shoppingRecordMapper.deleteByPrimaryKey(key)>0;
+    }
+
+    @Override
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord) {
         return shoppingRecordMapper.updateByPrimaryKey(shoppingRecord)>0;
     }
@@ -59,7 +66,6 @@ public class ShoppingCarRecordServiceImpl implements ShoppingCarRecordService{
         ShoppingRecordExample.Criteria srec=example.createCriteria();
         srec.andUserIdIsNotNull();
         srec.andUserIdEqualTo(userId);
-        example.setOrderByClause("userId asc");
         return shoppingRecordMapper.selectByExample(example);
     }
 
@@ -68,7 +74,6 @@ public class ShoppingCarRecordServiceImpl implements ShoppingCarRecordService{
         ShoppingRecordExample example=new ShoppingRecordExample();
         ShoppingRecordExample.Criteria srec=example.createCriteria();
         srec.andUserIdIsNotNull();
-        example.setOrderByClause("userId");
         return shoppingRecordMapper.selectByExample(example);
     }
 
@@ -78,5 +83,19 @@ public class ShoppingCarRecordServiceImpl implements ShoppingCarRecordService{
         key.setUserId(userId);
         key.setProductId(Id);
         return shoppingRecordMapper.selectByPrimaryKey(key).getPrice()>0;
+    }
+
+    @Override
+    public boolean getUserProductRecord(int userId, int productId) {
+        ShoppingRecordExample example=new ShoppingRecordExample();
+        ShoppingRecordExample.Criteria s=example.createCriteria();
+        s.andUserIdEqualTo(userId);
+        s.andProductIdEqualTo(productId);
+        List<ShoppingRecord>list=shoppingRecordMapper.selectByExample(example);
+        if(list.size()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

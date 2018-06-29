@@ -78,7 +78,6 @@
         </div>
     </div>
 </div>
-<div id="footer"><%@include file="footer.html"%></div>
 
 <script type="text/javascript">
 

@@ -56,8 +56,11 @@
                             <div class="ui divider"></div>
                             <a class="item" href="${pageContext.request.contextPath}/reLogin">重新登录</a>
                             <a class="item" href="${pageContext.request.contextPath}/register">新用户注册</a>
+                            <a class="item" href="${pageContext.request.contextPath}/editMessage">个人中心</a>
                             <c:if test="${currentUser.role==1}">
-                                <a class="item" href="${pageContext.request.contextPath}/admin">管理员入口</a>
+                                <a class="item" href="${pageContext.request.contextPath}/edit_pet">管理宠物</a>
+                                <a class="item" href="${pageContext.request.contextPath}/edit_product">管理商品</a>
+                                <a class="item" href="${pageContext.request.contextPath}/shopping_handle">发货管理</a>
                             </c:if>
                             <div class="ui divider"></div>
                             <a class="grey item">Need Help?</a>
@@ -124,20 +127,21 @@
         });
     });
     function onSearch() {
-        var search={}
-        var search_text=$("#search").val()
+        let search={}
+        search.text=$("#search").val()
         $.ajax({
             type:'POST',
-            url:"${pageContext.request.contextPath}/search",
+            url:"${pageContext.request.contextPath}/onSearch",
             data:search,
-            dataType:JSON,
+            dataType:'json',
             success:function (result) {
-                if(result.result==='success'){
-                    window.location.href="${pageContext.request.contextPath}/onsearch"
+                if(result.result=='success'){
+                    window.location.href="${pageContext.request.contextPath}/search"
+                    window.event.returnValue=false
                 }
             },
             error:function (result) {
-                layer.alert("unexpected error")
+                layer.alert("search unexpected error")
             }
         })
     }

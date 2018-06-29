@@ -72,7 +72,6 @@
 
         </div>
     </div>
-    <div id="footer"><%@include file="footer.html"%></div>
 </div>
 <script>
     $(".avt").popup({

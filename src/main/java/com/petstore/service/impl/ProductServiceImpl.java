@@ -60,8 +60,7 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getProductsByKeyWord(String searchKeyWord) {
         ProductExample pe=new ProductExample();
         ProductExample.Criteria pec=pe.createCriteria();
-        pec.andNameLike(searchKeyWord);
-        pe.setOrderByClause("id asc");
+        pec.andKeyWordLike(searchKeyWord);
         return productMapper.selectByExample(pe);
     }
 
