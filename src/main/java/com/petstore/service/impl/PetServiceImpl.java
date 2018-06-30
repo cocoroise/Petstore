@@ -55,11 +55,12 @@ public class PetServiceImpl implements PetService{
 
     @Override
     public List<Pet> getPetsByKeyWord(String searchKeyWord) {
-        PetExample pe=new PetExample();
-        PetExample.Criteria pec=pe.createCriteria();
-        pec.andNameIsNotNull();
-        pec.andKeyWordLike(searchKeyWord);
-        return petMapper.selectByExample(pe);
+//        PetExample pe=new PetExample();
+//        PetExample.Criteria pec=pe.createCriteria();
+//        pec.andNameIsNotNull();
+//        pec.andKeyWordLike(searchKeyWord);
+//        return petMapper.selectByExample(pe);
+        return petMapper.selectByKeyWord(searchKeyWord);
     }
 
     @Override

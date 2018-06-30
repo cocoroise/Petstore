@@ -39,7 +39,6 @@
                         <div class="menu">
                             <a class="item" href="${pageContext.request.contextPath}/login">登录</a>
                             <a class="item" href="${pageContext.request.contextPath}/register">注册</a>
-                            <a class="item" href="${pageContext.request.contextPath}/admin">管理员</a>
                             <div class="ui divider"></div>
                             <a class="grey item">Need Help?</a>
                             <a class="item" href="${pageContext.request.contextPath}/contact">联系我们</a>
@@ -58,8 +57,8 @@
                             <a class="item" href="${pageContext.request.contextPath}/register">新用户注册</a>
                             <a class="item" href="${pageContext.request.contextPath}/editMessage">个人中心</a>
                             <c:if test="${currentUser.role==1}">
+                                <div class="ui divider"></div>
                                 <a class="item" href="${pageContext.request.contextPath}/edit_pet">管理宠物</a>
-                                <a class="item" href="${pageContext.request.contextPath}/edit_product">管理商品</a>
                                 <a class="item" href="${pageContext.request.contextPath}/shopping_handle">发货管理</a>
                             </c:if>
                             <div class="ui divider"></div>

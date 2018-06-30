@@ -34,18 +34,40 @@ public class testGetCommodity {
 
     @Test
     public void testGetPet(){
-        List list=petService.getAllPets();
-        for (int i=0;i<list.size();i++){
-            Pet pet=(Pet)list.get(i);
-            System.out.println(pet.getName());
-        }
+        Pet pet=petService.getPet(2);
+        pet.setCounts(4);
+        petService.updatePet(pet);
+        System.out.println(pet.getCounts());
     }
 
     @Test
     public void testGetProduct(){
-        List list=productService.getAllProduct();
-        for (int i=0;i<list.size();i++){
-            Product product=(Product) list.get(i);
+        Product product=productService.getProduct(18);
+        System.out.println(product.getCounts());
+    }
+
+    @Test
+    public void testGetCommodityById(){
+        int type=commodityService.getCommodity(13).getType();
+        System.out.println(type);
+    }
+
+    @Test
+    public void testGetKeyWordForPet(){
+        String testStr="柯";
+        List<Pet> list=petService.getPetsByKeyWord(testStr);
+        System.out.println(list.size());
+
+        for(int i=0;i<list.size();i++){
+            System.out.println("i:"+list.get(i).getName());
+        }
+    }
+
+    @Test
+    public void testGetKeyWordForProduct(){
+        String testStr="粮";
+        List<Product> list=productService.getProductsByKeyWord(testStr);
+        for(Product product:list){
             System.out.println(product.getName());
         }
     }

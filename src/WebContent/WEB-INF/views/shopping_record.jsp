@@ -107,6 +107,7 @@
                               <th>数量</th>
                               <th>价格</th>
                               <th>发货状态</th>
+                              <th></th>
                            </tr>
                         </thead>
                         <tbody>
@@ -125,6 +126,7 @@
                 '<td>' + allShoppingRecords[i].count + '</td>' +
                 '<td>' + allShoppingRecords[i].price + '</td>' +
                 '<td>' + orderArray[allShoppingRecords[i].orderStatus] + '</td>' +
+                '<td></td>'+
                 '</tr>' ;
             allRecordCounts++;
             // order or orderStatus???
@@ -136,22 +138,21 @@
                     '<td>' + allShoppingRecords[i].count + '</td>' +
                     '<td>' + allShoppingRecords[i].price + '</td>' +
                     '<td>' + orderArray[allShoppingRecords[i].orderStatus] + '</td>' +
+                    '<td></td>'+
                     '</tr>' ;
                 unhandedCounts++;
                 //已发货
             } else if (allShoppingRecords[i].orderStatus === 1) {
                 let email = getUserEmail(allShoppingRecords[i].userId);
-                var phone = getUserPhone(allShoppingRecords[i].userId)
+                let phone = getUserPhone(allShoppingRecords[i].userId)
                 handledHTML +=
                     '<tr>' +
                     '<td>' + product.name + '</td>' +
                     '<td>' + allShoppingRecords[i].count + '</td>' +
                     '<td>' + allShoppingRecords[i].price + '</td>' +
-                    '<td>' + email + '</td>' +
-                    '<td>' + phone + '</td>' +
                     '<td>' + orderArray[allShoppingRecords[i].orderStatus] + '</td>' +
                     '<td>' +
-                    '<button class="btn btn-primary btn-sm" onclick="receiveCommodity(' + allShoppingRecords[i].userId + ',' + allShoppingRecords[i].productId + ',\'' + allShoppingRecords[i].time + '\')">确认收货</button>' +
+                    '<button class="ui primary button" onclick="receiveCommodity(' + allShoppingRecords[i].userId + ',' + allShoppingRecords[i].productId + ',\'' + allShoppingRecords[i].time + '\')">确认收货</button>' +
                     '</td>' +
                     '</tr>' ;
                 handledCounts++;
@@ -163,6 +164,7 @@
                     '<td>' + allShoppingRecords[i].count + '</td>' +
                     '<td>' + allShoppingRecords[i].price + '</td>' +
                     '<td>' + orderArray[allShoppingRecords[i].orderStatus] + '</td>' +
+                    '<td></td>'+
                     '</tr>' ;
                 receivedCounts++;
             }
@@ -273,7 +275,27 @@
     }
 
     function receiveCommodity(userId, productId, time) {
-
+        let receiveResult = "";
+        let shoppingRecord = {};
+        shoppingRecord.userId = userId;
+        shoppingRecord.productId = productId;
+        shoppingRecord.time = time;
+        shoppingRecord.orderStatus = 2;
+        $.ajax({
+            async : false, //设置同步
+            type : 'POST',
+            url : '${cp}/changeShoppingRecord',
+            data : shoppingRecord,
+            dataType : 'json',
+            success : function(result) {
+                receiveResult = result.result;
+            },
+            error : function(result) {
+                layer.alert('查询错误');
+            }
+        });
+        if(receiveResult = "success")
+            window.location.href = "${cp}/shopping_record";
     }
 
     function isLogin() {

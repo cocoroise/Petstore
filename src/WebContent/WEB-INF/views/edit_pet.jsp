@@ -87,12 +87,12 @@
                     <td >${"${allPet[i].price}"}</td>
                     <td >${"${allPet[i].keyWord}"}</td>
                     <td >${"${allPet[i].description}"}</td>
-                    <td><img src="${cp}/static/img/pet/${'${allPet[i].id}'}.jpg"></td>
+                    <td><img class="ui small image" src="${cp}/static/img/pet/${'${allPet[i].id}'}.jpg"></td>
                     <td class="del-col">
                 <div class="ui buttons center aligned segment">
                 <button id="delBtn"
         class="ui positive button"
-            onclick="updatePet(${'${allPet[i].id}'})">save</button>
+            onclick="updatePet(${"${allPet[i].id}"})">save</button>
                 <div class="or"></div>
                 <button class= "ui negative button" onclick="deletePet(${'${allPet[i].id}'})">delete</button>
                 </div>
@@ -216,7 +216,7 @@
 
     function fileUpload() {
         let results = "";
-        let name =(Number)(document.getElementById("productName").value);
+        let name =(Number)($("#pet_name").parent("tr").attr("id"));
         console.log("pic name:"+name)
         $.ajaxFileUpload({
             url:'${cp}/uploadFile?name='+name,

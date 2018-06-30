@@ -86,6 +86,7 @@
             let type = resultList[i].type
             let id = type <= 2 ? resultList[i].id : resultList[i].productId
             let imgURL = "${cp}/static/img/pet/" + id + ".jpg"
+            let name=resultList[i].name
             let price = resultList[i].price
             let description = resultList[i].description
             let location=type<=2?"getPetDetail(event)":"getProductDetail(event)"
@@ -95,7 +96,7 @@
                                 <img src="${"${imgURL}"}" alt="pic" class="transition visible">
                             </div>
                             <div class="content">
-                                <a data-value="${"${id}"}" onclick="${"${location}"}" class="header">Coco</a>
+                                <a data-value="${"${id}"}" onclick="${"${location}"}" class="header">${"${name}"}</a>
                                 <div class="meta">￥${"${price}"}</div>
                                 <div class="description">${"${description}"}</div>
                             </div>

@@ -20,6 +20,9 @@ public interface PetMapper {
 
     Pet selectByPrimaryKey(Integer id);
 
+    //自定义模糊查询
+    List<Pet> selectByKeyWord(String keyword);
+
     int updateByExampleSelective(@Param("record") Pet record, @Param("example") PetExample example);
 
     int updateByExample(@Param("record") Pet record, @Param("example") PetExample example);

@@ -58,10 +58,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<Product> getProductsByKeyWord(String searchKeyWord) {
-        ProductExample pe=new ProductExample();
-        ProductExample.Criteria pec=pe.createCriteria();
-        pec.andKeyWordLike(searchKeyWord);
-        return productMapper.selectByExample(pe);
+        return productMapper.selectByKeyWord(searchKeyWord);
     }
 
     @Override

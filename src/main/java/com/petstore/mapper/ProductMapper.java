@@ -20,6 +20,8 @@ public interface ProductMapper {
 
     Product selectByPrimaryKey(Integer productId);
 
+    List<Product> selectByKeyWord(String keyWord);
+
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 
     int updateByExample(@Param("record") Product record, @Param("example") ProductExample example);

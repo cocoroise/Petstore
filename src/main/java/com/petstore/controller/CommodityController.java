@@ -63,11 +63,6 @@ public class CommodityController {
         return "edit_pet";
     }
 
-    @RequestMapping(value = "/edit_product")
-    public String editProduct(){
-        return "edit_product";
-    }
-
 
     @RequestMapping(value = "/getPetDetail")
     @ResponseBody
