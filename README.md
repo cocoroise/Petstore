@@ -21,3 +21,13 @@
 4. 在github新建分支并上传到远程仓库，仓库名为shopping，先创建本地分支 git branch shopping，然后切换到这个分支 git checkout shopping，然后push或者pull到仓库，git push origin shopping，一般push失败是因为远程仓库里的东西和你现在有的不一样，你必须要先pull到自己的仓库，第一次pull的时候会进入vi的编辑界面，这里就要用到linux的知识了，:进入命令行模式，i进去编辑模式，东西写完了想退出就先：然后看低行的光标，输入wq，就可以保存并退出了。
 5.在jsp里用字符串模板和el表达式冲突的解决方法，${"${item.name}"},让jsp把它看成字符串不解析。
 6. 用$获取的对象是jQuery对象，想要转换成原生对象只要从数组里取一个值出来就好了，比如说$("#list")[0]，在用find的时候，得到的是一个数组，想获取它的size用$("#editTe").find(".upload-file-name").size()，想取某个元素就用$($("#editTe").find(".upload-file-name").get(i)).parent().css()...，封装成jq对象，才能进一步获取parent或者val/text/html的值。
+7. mybatis实现模糊查询的方法，先改mapper.xml文件，在里面加一个select语句
+<select id="selectByKeyWord" parameterType="java.lang.String"  resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from product
+    <where>
+      <if test="_parameter != null">
+        AND key_word LIKE concat(concat('%',#{key_word}),'%')
+      </if>
+    </where>
+  </select>
+  然后修改mapper.java加入相应的方法，然后你的service就可以调用这个mapper里的方法愉快地进行查询啦。
