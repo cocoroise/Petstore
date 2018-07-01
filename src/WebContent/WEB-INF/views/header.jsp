@@ -58,6 +58,7 @@
                             <a class="item" href="${pageContext.request.contextPath}/editMessage">个人中心</a>
                             <c:if test="${currentUser.role==1}">
                                 <div class="ui divider"></div>
+                                <a class="item" href="${pageContext.request.contextPath}/admin">用户管理</a>
                                 <a class="item" href="${pageContext.request.contextPath}/edit_pet">管理宠物</a>
                                 <a class="item" href="${pageContext.request.contextPath}/shopping_handle">发货管理</a>
                             </c:if>

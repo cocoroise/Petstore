@@ -67,6 +67,16 @@
         </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/js/jquery.nicescroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/js.cookie.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js" type="text/javascript"></script>
+<script data-pace-options='{"ajax":false}' src="${cp}/static/js/pace.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/editTable.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/dataTables.semanticui.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/layer.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/static/js/ajaxfileupload.js" type="text/javascript"></script>
 
 <script>
     let loading = layer.load(0)
@@ -216,7 +226,7 @@
 
     function fileUpload() {
         let results = "";
-        let name =(Number)($("#pet_name").parent("tr").attr("id"));
+        let name =(Number)($("#pet_name").parent("tr").prev().attr("id")+1);
         console.log("pic name:"+name)
         $.ajaxFileUpload({
             url:'${cp}/uploadFile?name='+name,
@@ -254,16 +264,6 @@
 
 </script>
 
-<script src="${pageContext.request.contextPath}/static/js/jquery.nicescroll.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/js.cookie.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/main.js" type="text/javascript"></script>
-<script data-pace-options='{"ajax":false}' src="${cp}/static/js/pace.js"
-        type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/jquery.dataTables.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/editTable.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/dataTables.semanticui.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/layer.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/static/js/ajaxfileupload.js" type="text/javascript"></script>
 
 </body>
 </html>

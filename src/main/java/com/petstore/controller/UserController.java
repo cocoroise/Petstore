@@ -1,6 +1,7 @@
 package com.petstore.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.petstore.po.User;
 import com.petstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -31,7 +33,7 @@ public class UserController {
     @RequestMapping(value = "/admin")
     public String admin(){
         System.out.println("拦截到admin请求");
-        return "edit_pet";
+        return "admin";
     }
 
     @RequestMapping(value = "/login")
@@ -138,6 +140,42 @@ public class UserController {
         String phone=user.getPhone();
         Map<String,Object> resultMap=new HashMap<String,Object>();
         resultMap.put("phone",phone);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/getAllUsers")
+    @ResponseBody
+    public Map<String,Object> getAllUser(){
+        List user_list=userService.getAllUser();
+        String all_user= JSONArray.toJSONString(user_list);
+        Map<String,Object> resultMap=new HashMap<String ,Object>();
+        resultMap.put("all_user",all_user);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/updateUser")
+    @ResponseBody
+    public Map<String,Object> updateUser(int id,String name,String sex,String email,String phone,String password,int role){
+//<th>姓名</th> <th>性别</th> <th>地址</th> <th>电话</th> <th>密码</th> <th>角色</th>
+        User user=userService.getUser(id);
+        user.setName(name);
+        user.setSex(sex);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setPassword(password);
+        user.setRole(role);
+        userService.updateUser(user);
+        Map<String,Object> resultMap=new HashMap<String ,Object>();
+        resultMap.put("result","success");
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/deleteUser")
+    @ResponseBody
+    public Map<String,Object> deleteUser(int id){
+        userService.deleteUser(id);
+        Map<String,Object> resultMap=new HashMap<String ,Object>();
+        resultMap.put("result","success");
         return resultMap;
     }
 }
